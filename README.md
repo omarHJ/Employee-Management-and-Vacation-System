@@ -1,5 +1,7 @@
 # Employee Management System
 
+Omar Hussein Mahmoud Jaber
+
 ## Project Overview
 
 This system is designed to manage employees and facilitate vacation request workflows within a company. The key functionalities include:
