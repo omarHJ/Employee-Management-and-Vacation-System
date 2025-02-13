@@ -27,22 +27,20 @@ namespace EmployeeManagementSystem
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure Employee self-referencing relationship
             modelBuilder.Entity<Employee>()
                 .HasOne(e => e.ReportedTo)
                 .WithMany(e => e.Subordinates)
                 .HasForeignKey(e => e.ReportedToEmployeeNumber)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure VacationRequest relationships
             modelBuilder.Entity<VacationRequest>()
-                .HasOne(vr => vr.ApprovedBy)  // Fixed: use vr instead of e
+                .HasOne(vr => vr.ApprovedBy)  
                 .WithMany(e => e.ApprovedRequests)
                 .HasForeignKey(vr => vr.ApprovedByEmployeeNumber)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<VacationRequest>()
-                .HasOne(vr => vr.DeclinedBy)  // Fixed: use vr instead of e
+                .HasOne(vr => vr.DeclinedBy)  
                 .WithMany(e => e.DeclinedRequests)
                 .HasForeignKey(vr => vr.DeclinedByEmployeeNumber)
                 .OnDelete(DeleteBehavior.Restrict);
